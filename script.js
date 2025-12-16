@@ -1,6 +1,6 @@
 // Typing Effect
 const textElement = document.querySelector('.typing-effect');
-const words = ["Game Server Administrator", "AI-Assisted Operations", "Community Manager"];
+const words = ["Game Server Admin", "AI Operations", "Community Mgr"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -26,12 +26,17 @@ const typeEffect = () => {
 
 document.addEventListener('DOMContentLoaded', typeEffect);
 
-// Smooth Scroll (Backup)
+// Smooth Scroll for Anchors
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
